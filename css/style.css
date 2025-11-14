@@ -1,0 +1,895 @@
+/* --- Days One --- */
+@font-face {
+  font-family: "Days One";
+  src: url(../fonts/DaysOne-Regular.woff2);
+}
+/* --- Chakra Petch --- */
+@font-face {
+  font-family: "Chakra Petch";
+  src: url(../fonts/ChakraPetch-Light.woff2);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url(../fonts/ChakraPetch-Bold.woff2);
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Global */
+
+:root {
+  --color-brand: #a7cf19;
+  --color-brand-200: #3ce36e;
+  --color-brand-100: #c9f81a;
+  --color-black-200: #1e2939;
+  --color-black-300: #0b0e13;
+  --color-black-400: #101726;
+  --color-link-defule: #9da5ab;
+  --spacing: 0.25rem;
+}
+::selection {
+  background-color: var(--color-brand-100);
+  color: var(--color-black-200);
+}
+
+html {
+  scroll-padding-top: 3.125rem;
+}
+.chakra-petch-font {
+  font-family: "Chakra Petch";
+}
+
+/* Brand color */
+.brand-color {
+  color: var(--color-brand);
+}
+.brand-color-100 {
+  color: var(--color-brand-100);
+}
+
+.color-gray {
+  color: var(--color-link-defule);
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+/* Section title component */
+.section-title {
+  text-align: center;
+}
+.section-title > .badge-title > .title-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.section-title > .badge-title > .title-wrapper > h3 {
+  font-family: "Chakra Petch", sans-serif;
+  width: fit-content;
+  padding-inline: 18px;
+  background-color: #000000;
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+.section-title .badge-title {
+  margin-bottom: 15px;
+}
+.section-title .badge-title .line {
+  position: absolute;
+  height: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    var(--color-brand) 50%,
+    var(--color-brand) 60%,
+    transparent 80%,
+    transparent 100%
+  );
+  z-index: -1;
+}
+.section-title > h2 {
+  font-size: 1.625rem;
+  font-weight: 700;
+}
+
+body {
+  font-family: "Days One", sans-serif;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Navbar */
+.navbar {
+  /* I will edit the icon focus variable as we have just one navbar so we will take it easy */
+  --bs-navbar-toggler-focus-width: 0;
+  border-bottom: 0.125rem solid rgba(44, 44, 44, 0.9);
+}
+.navbar .navbar-nav {
+  border-top: 0.1rem solid rgba(123, 123, 123, 0.336);
+  margin-block: 1rem;
+  padding-block: 1rem;
+}
+.sp-nav-toggle-icon {
+  transition: color 0.2s;
+}
+/* Change the navbar link weigh from 700 to 400 */
+.navbar-nav > .nav-item > .nav-link {
+  font-weight: 400;
+}
+.navbar-nav > .nav-item > .nav-link > i {
+  font-size: 1.1rem;
+}
+.navbar-toggler:hover .sp-nav-toggle-icon {
+  color: var(--color-brand);
+}
+.navbar .navbar-brand {
+  font-size: 1.125rem;
+}
+.navbar-special-dark {
+  background-color: #0b0e13;
+  --bs-navbar-color: #fff;
+  --bs-navbar-hover-color: var(--color-brand);
+  --bs-navbar-active-color: var(--color-brand);
+  --bs-navbar-brand-color: var(--color-brand-100);
+  --bs-navbar-brand-hover-color: var(--color-brand);
+}
+
+/* Hero button start here */
+
+.btn-brand,
+.btn-outline-brand {
+  font-family: "Chakra Petch", sans-serif;
+  width: 100%;
+  font-size: 0.875rem;
+  padding: 0.656rem 1.313rem;
+  font-weight: 700;
+}
+
+.btn-brand {
+  background-color: var(--color-brand-100);
+  color: black;
+}
+
+.btn-outline-brand {
+  background-color: transparent;
+  color: var(--color-brand-100);
+  border: 0.125rem solid var(--color-brand-100);
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.brand-btn-wrapper {
+  position: relative;
+  cursor: pointer;
+  overflow-x: hidden;
+  border-radius: 0.375rem;
+}
+
+.brand-btn-wrapper .btn {
+  position: relative;
+  overflow: hidden;
+}
+.brand-btn-wrapper::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 250, 0.4)
+  );
+  border-radius: 0.375rem;
+  transition: transform 0.4s;
+  /* Allow pointer events to pass through the overlay so hovering the button/wrapper
+     doesn't flicker when the overlay moves across the button. */
+  pointer-events: none;
+}
+
+.brand-btn-wrapper:hover::after {
+  transform: translateX(100%);
+}
+
+.brand-btn-wrapper:hover .btn-outline-brand {
+  background-color: var(--color-brand-100);
+  color: black;
+}
+
+.brand-btn-wrapper:hover .btn-brand {
+  background-color: var(--color-brand-100);
+  color: black;
+}
+
+/* Header */
+
+.header {
+  background-image: url(../images/hero-bg.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.header::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.87);
+}
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  z-index: 10;
+  padding-top: 9.188rem;
+  padding-bottom: 6.125rem;
+  color: #fff;
+}
+.hero-section > .left-side > .inner > h1 {
+  font-size: 2rem;
+}
+.hero-section > .left-side > .inner > p {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.7;
+  padding-inline: 0.875rem;
+}
+
+.hero-image-wrapper {
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    0deg,
+    var(--color-brand-200),
+    var(--color-brand-100)
+  );
+  padding: 4px;
+  flex: 0 0 5rem;
+  height: 15rem;
+}
+
+.hero-image-wrapper > img {
+  border-radius: calc(1rem - 4px);
+  height: 100%;
+}
+
+/* .right-side .inner {
+  padding-inline: 2.5rem;
+} */
+.hero-image-badge > .inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-10%, 30%);
+  border: 0.1rem solid rgba(140, 134, 134, 0.5);
+  background-color: var(--color-black-300);
+  padding: 0.5rem 1rem;
+}
+
+.hero-image-badge > .inner > .icon > li {
+  color: var(--color-brand);
+  font-size: 1.125rem;
+}
+.hero-image-badge > .inner > .info > p {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.725rem;
+  color: var(--color-link-defule);
+}
+
+/* Main Section ---> Our Game Section */
+/* Carosal item style */
+.image-item {
+  overflow: hidden;
+  border-radius: 24px;
+  cursor: pointer;
+  border: 5px solid transparent;
+  transition: border 0.2s;
+}
+.image-item > .inner {
+  position: relative;
+}
+
+/* Top side */
+.image-item > .inner > .top-side {
+  position: absolute;
+  transform: translate(10%, -100%);
+  z-index: 5;
+  transition: transform 0.2s;
+}
+.image-item > .inner > .top-side > .badge {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.25rem 0.625rem;
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.15);
+}
+.image-item > .inner > .top-side > .badge > i {
+  color: var(--color-brand);
+  font-size: 12px;
+}
+.image-item > .inner > .top-side > .badge > span {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Middle side */
+.image-item > .inner > .middle-side {
+  position: relative;
+}
+.image-item > .inner > .middle-side > .layer {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    var(--color-brand) 0%,
+    transparent 50%
+  );
+  z-index: 3;
+  transform: translateY(100%);
+  transition: transform 0.2s ease;
+}
+.image-item > .inner > .middle-side > .image-wrapper {
+  height: 22rem;
+  width: 100%;
+}
+.image-item > .inner > .middle-side > .image-wrapper > img {
+  height: 100%;
+  z-index: 1;
+  transition: transform 0.2s;
+}
+
+.image-item > .inner > .bottom-side {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  transform: translate(10%, 100%);
+  transition: transform 0.2s;
+}
+.image-item > .inner > .bottom-side > p {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Hover on item */
+.image-item:hover .inner .top-side {
+  transform: translate(10%, 20%);
+}
+.image-item:hover .inner .middle-side .layer {
+  transform: translateY(0);
+}
+.image-item:hover .inner .middle-side .image-wrapper > img {
+  transform: scale(1.1);
+}
+.image-item:hover .inner .bottom-side {
+  transform: translate(10%, 0);
+}
+.image-item:hover {
+  border: 5px solid var(--color-brand);
+}
+
+/* Carousal Style start here */
+
+.special-next-btn,
+.special-prev-btn {
+  position: static;
+  width: 3rem;
+  height: 3rem;
+  border: 0.125rem solid #fff;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.sp-carousel-control-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Temp btn hover style */
+
+.special-next-btn:focus,
+.special-next-btn:hover,
+.special-prev-btn:focus,
+.special-prev-btn:hover {
+  color: var(--color-brand);
+  text-decoration: none;
+  border: 0.125rem solid var(--color-brand);
+  outline: 0;
+  opacity: 1;
+}
+
+/* Section What we do */
+.we-do-item {
+  position: relative;
+  border: 1px solid rgba(151, 148, 148, 0.4);
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border 0.2s ease-in;
+}
+.we-do-st-item,
+.we-do-item {
+  overflow: hidden;
+  border-radius: 30px;
+  aspect-ratio: 4/4;
+}
+.we-do-item::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  transform: translate(-100%, -100%);
+  background-image: linear-gradient(
+    to top left,
+    transparent 50%,
+    var(--color-brand-100) 50%
+  );
+  transition: transform 0.2s ease-in;
+}
+.we-do-item::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  transform: translate(100%, 100%);
+  background-image: linear-gradient(
+    to bottom right,
+    transparent 50%,
+    var(--color-brand-100) 50%
+  );
+  transition: transform 0.2s ease-in;
+}
+.we-do-item > h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.we-do-item > .we-do-content {
+  background-color: var(--color-black-200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+.we-do-item > .we-do-content > .we-do-icon > i {
+  color: var(--color-brand-100);
+  font-size: 1.5rem;
+  transition: color 0.2s ease-in-out;
+}
+.we-do-item:hover {
+  border: 2px solid var(--color-brand-100);
+}
+.we-do-item:hover .we-do-content {
+  background-color: var(--color-brand-100);
+}
+.we-do-item:hover .we-do-content > .we-do-icon > i {
+  color: var(--color-black-200);
+}
+.we-do-item:hover::before {
+  transform: translate(60%, 60%);
+}
+.we-do-item:hover::after {
+  transform: translate(-60%, -60%);
+}
+
+/* We do animation section */
+.animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: radial-gradient(
+    ellipse,
+    var(--color-brand-100) 0%,
+    black 70%
+  );
+  z-index: 1;
+}
+.we-do-anime > .line-sepration {
+  width: 100%;
+  height: 5px;
+  background-image: linear-gradient(
+    90deg,
+    black 0%,
+    white 20%,
+    var(--color-brand-100) 30%,
+    var(--color-brand-100) 70%,
+    white 80%,
+    black 100%
+  );
+  margin-bottom: 75px;
+}
+.we-do-anime-wrapper {
+  /* border: 5px solid rgb(238, 21, 21); */
+  z-index: 2;
+  overflow-x: hidden;
+}
+.anime-item {
+  width: 100px;
+}
+.anime-item > img {
+  border-radius: 1rem;
+}
+
+.we-do-anime-wrapper.from-r-to-l > .row {
+  animation: spinBackward 50s infinite linear;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+.we-do-anime-wrapper.from-l-to-r > .row {
+  animation: spinForword 50s infinite linear;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+@keyframes spinForword {
+  from {
+    translate: -100%;
+  }
+  to {
+    translate: 0;
+  }
+}
+@keyframes spinBackward {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
+  }
+}
+/* OUR Team Section */
+
+.member-item > .inner-item {
+  cursor: pointer;
+  border-radius: 1rem;
+  width: 100%;
+  height: calc(var(--spacing) * 80);
+  overflow: hidden;
+}
+.member-item > .inner-item > .gray-filter > img {
+  height: 100%;
+  object-position: center;
+}
+.member-item > .inner-item > .gray-filter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.member-item > .inner-item > .gray-filter::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: grayscale(100%);
+  transition: transform 0.5s;
+}
+
+.member-item:hover > .inner-item > .gray-filter::after {
+  transform: translateY(-100%);
+}
+
+.text-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-15%);
+  padding: 0.625rem;
+  color: #fff;
+}
+.member-item .text-content > .left-side {
+  flex: 0 0 70%;
+}
+.member-item .text-content > .right-side {
+  flex: 0 0 10%;
+}
+.member-item .text-content > .left-side > h3 {
+  font-size: 1.125rem;
+  text-shadow: 2px 2px black;
+  padding-bottom: 5px;
+}
+
+.member-item .text-content > .left-side > p,
+.member-item .text-content > .left-side > span {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-shadow: 1px 1px black;
+}
+.member-item .text-content > .left-side > span {
+  color: rgb(185, 185, 185);
+}
+
+.text-content > .right-side > p {
+  transform: rotate(90deg);
+  text-shadow: 1px 1px black;
+}
+
+/* Contact us section */
+.contact-us.section-wrapper {
+  background-color: var(--color-black-400);
+}
+.contact-us-section > .section-title > span {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.contact-us-row > .left-side > .info-box {
+  background-color: var(--color-black-200);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.contact-us-row > .left-side > .info-box > .icon-wrapper {
+  background-color: var(--color-brand-100);
+  flex: 0 0 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  color: var(--color-black-200);
+  font-size: 1.4rem;
+}
+
+.contact-us-row > .left-side > .info-box > .text-wrapper > h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.contact-us-row > .left-side > .info-box > .text-wrapper > span {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 250, 0.7);
+}
+.contact-us-row > .left-side > .social-box {
+  background-image: linear-gradient(
+    to right,
+    var(--color-brand-100),
+    var(--color-brand-200)
+  );
+  color: var(--color-black-300);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.contact-us-row
+  > .left-side
+  > .social-box
+  > .social-icons-container
+  > .social-icon-wrapper {
+  flex: 0 0 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: var(--color-brand-100);
+  background-color: var(--color-black-300);
+  cursor: pointer;
+}
+.contact-us-row
+  > .left-side
+  > .social-box
+  > .social-icons-container
+  > .social-icon-wrapper
+  > i {
+  font-size: 1.25rem;
+
+  transition: text-shadow 0.2s;
+}
+.contact-us-row
+  > .left-side
+  > .social-box
+  > .social-icons-container
+  > .social-icon-wrapper:hover
+  > i {
+  text-shadow: 0px 0px 15px;
+}
+/* ----> right side */
+.contact-us-row > .right-side {
+  background-color: var(--color-black-200);
+}
+.contact-us-row > .right-side > form label {
+  font-size: 1rem;
+  font-family: "Chakra Petch", sans-serif;
+}
+.contact-us-row > .right-side > form input::placeholder {
+  font-size: 1rem;
+  font-family: "Chakra Petch", sans-serif;
+  color: var(--color-link-defule);
+  opacity: 1;
+}
+
+.special-form-control {
+  font-family: "Chakra Petch", sans-serif;
+  display: block;
+  width: 100%;
+  padding: 0.675rem 0.85rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  appearance: none;
+  background-color: #364153;
+  background-clip: padding-box;
+  border: 1px solid var(--color-link-defule);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.special-form-control:focus {
+  background-color: #364153;
+  border-color: var(--color-brand-100);
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem var(--color-brand-100);
+  color: #fff;
+}
+
+.special-form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+
+  display: block;
+  width: 100%;
+  background-color: #364153;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  font-family: "Chakra Petch", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--bs-form-select-bg-img),
+    var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid var(--color-link-defule);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.special-form-select > option {
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.special-form-select:focus {
+  border-color: var(--color-brand-100);
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem var(--color-brand-100);
+}
+/* footer */
+.bg-footer {
+  background-color: #000000;
+  color: #fff;
+}
+.footer-copyright-box > .copyright-inner > .copy-right-links > a,
+.footer-box > .row > .social-links-container > a {
+  color: #a2a3a5ca;
+  transition: color 0.2s;
+}
+
+.footer-copyright-box > .copyright-inner > .copy-right-links > a:hover,
+.footer-box > .row > .social-links-container > a:hover {
+  color: var(--color-brand-100);
+}
+.footer-box > .list-group .link-footer {
+  color: var(--color-link-defule);
+  transition: color 0.2s;
+}
+.footer-box > .list-group .link-footer:hover {
+  color: var(--color-brand-100);
+}
+
+/* Focus state - change border and box-shadow color */
+.special-form-check-input {
+  padding: 5px;
+}
+.special-form-check-input:focus {
+  border-color: var(--color-brand-100); /* Your brand color */
+  outline: 0;
+  box-shadow: 0 0 0 0.05rem var(--color-brand-100); /* Adjust the rgba to match your brand color with transparency */
+}
+
+/* Checked state - change background and border color */
+.special-form-check-input:checked {
+  background-color: purple; /* Your brand color */
+  border-color: var(--color-brand-100); /* Your brand color */
+}
+
+/* 
+
+Breakpoint	Class infix	Dimensions
+X-Small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200px
+Extra extra large	xxl	≥1400px
+
+*/
+
+@media screen and (min-width: 768px) {
+  .section-title > h2 {
+    font-size: 3rem;
+  }
+  .hero-section .left-side > .inner > h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-section > .left-side > .inner > p {
+    font-size: 0.938rem;
+    padding-inline: 3rem;
+  }
+
+  .hero-image-wrapper {
+    height: 24rem;
+  }
+
+  .hero-image-badge > .inner {
+    transform: translate(-30%, 30%);
+  }
+
+  .btn-brand,
+  .btn-outline-brand {
+    font-size: 0.938rem;
+    padding: 0.938rem 1.875rem;
+    font-weight: 700;
+  }
+
+  .image-item > .inner > .middle-side > .image-wrapper {
+    height: 19rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .navbar .navbar-nav {
+    border: none;
+    margin-block: 0;
+    padding-block: 0;
+  }
+
+  .hero-image-wrapper {
+    height: 25rem;
+  }
+  .hero-image-badge > .inner {
+    transform: translate(-10%, 30%);
+  }
+  .hero-section .left-side > .inner > h1 {
+    font-size: 3.75rem;
+  }
+
+  .hero-section > .left-side > .inner > p {
+    font-size: 0.938rem;
+    padding-inline: 0;
+  }
+}
