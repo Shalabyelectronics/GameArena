@@ -1,5 +1,6 @@
 # GameArena (مشروع تعليمي)
 - https://shalabycode.dev/GameArena/
+
 مشروع واجهة أمامية (Front-End) تعليمي لبناء صفحة ألعاب حديثة باستخدام **HTML + CSS + Bootstrap + Font Awesome**.
 
 ## الهدف من المشروع
